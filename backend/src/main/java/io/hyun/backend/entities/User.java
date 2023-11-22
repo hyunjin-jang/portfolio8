@@ -14,7 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private String userEmail;
     private String userPassword;
@@ -25,4 +26,12 @@ public class User {
     private List<Posting> postingList = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private List<Comment> commentList = new ArrayList<>();
+
+    public void addPosting(Posting posting) {
+        this.postingList.add(posting);
+    }
+
+    void addCommend(Comment comment) {
+        this.commentList.add(comment);
+    }
 }

@@ -24,5 +24,9 @@ public class Posting {
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "posting")
-    private List<Comment> comment = new ArrayList<>();
+    private List<Comment> commentList = new ArrayList<>();
+
+    void addCommend(Comment comment) {
+        this.commentList.add(comment);
+    }
 }

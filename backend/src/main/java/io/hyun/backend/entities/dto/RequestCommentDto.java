@@ -1,23 +1,18 @@
-package io.hyun.backend.entities;
+package io.hyun.backend.entities.dto;
 
-import jakarta.persistence.*;
+import io.hyun.backend.entities.Posting;
+import io.hyun.backend.entities.User;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+public class RequestCommentDto {
     private String commentContent;
     private String commentDate;
-    @ManyToOne
     private User user;
-    @ManyToOne
     private Posting posting;
 }
