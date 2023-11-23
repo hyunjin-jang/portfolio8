@@ -30,4 +30,9 @@ public class PostingService {
         postingRepository.save(posting);
         return "Success";
     }
+
+    public int findByUser(Long userId) {
+        Optional<User> foundUser = userRepository.findById(userId);
+        return foundUser.get().getPostingList().size();
+    }
 }
