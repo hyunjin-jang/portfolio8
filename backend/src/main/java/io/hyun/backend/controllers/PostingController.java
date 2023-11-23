@@ -16,7 +16,7 @@ public class PostingController {
     private final PostingService postingService;
 
     @PostMapping("/posting")
-    public List<Posting> writePosting(@RequestBody RequestPostingDto dto) {
+    public String writePosting(@RequestBody RequestPostingDto dto) {
         return postingService.createPosting(dto);
     }
 }

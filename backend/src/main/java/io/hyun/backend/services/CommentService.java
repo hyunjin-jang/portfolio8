@@ -18,7 +18,6 @@ public class CommentService {
     public void createComment(RequestCommentDto dto) {
         Comment comment = Comment.builder()
                 .commentContent(dto.getCommentContent())
-                .commentDate(dto.getCommentDate())
                 .user(dto.getUser())
                 .posting(dto.getPosting())
                 .build();

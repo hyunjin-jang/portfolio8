@@ -17,18 +17,17 @@ public class PostingService {
     private final PostingRepository postingRepository;
     private final UserRepository userRepository;
 
-    public List<Posting> createPosting(RequestPostingDto dto) {
+    public String createPosting(RequestPostingDto dto) {
         User user = dto.getUser();
 
         Posting posting = Posting.builder()
                 .postingTitle(dto.getPostingTitle())
                 .postingContent(dto.getPostingContent())
                 .postingFile(dto.getPostingFile())
-                .postingDate(dto.getPostingDate())
                 .user(dto.getUser())
                 .build();
         user.addPosting(posting);
         postingRepository.save(posting);
-        return user.getPostingList();
+        return "Success";
     }
 }
