@@ -20,18 +20,11 @@ public class User {
     private String userEmail;
     private String userPassword;
     private String userNickName;
+    @Embedded
     private Address userAddress;
     private String userPhoneNumber;
     @OneToMany(mappedBy = "user")
     private List<Posting> postingList = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private List<Comment> commentList = new ArrayList<>();
-
-    public void addPosting(Posting posting) {
-        this.postingList.add(posting);
-    }
-
-    void addCommend(Comment comment) {
-        this.commentList.add(comment);
-    }
 }

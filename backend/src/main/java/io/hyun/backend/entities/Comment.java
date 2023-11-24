@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Builder
 @Data
@@ -18,8 +20,8 @@ public class Comment {
     private Long commentId;
     private String commentContent;
     private LocalDateTime commentDate;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private User user;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private Posting posting;
 }

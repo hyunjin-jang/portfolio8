@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Builder
 @Data
@@ -22,12 +24,18 @@ public class Posting {
     private String postingContent;
     private LocalDateTime postingDate;
     private String postingFile;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private User user;
     @OneToMany(mappedBy = "posting")
     private List<Comment> commentList = new ArrayList<>();
 
-    void addCommend(Comment comment) {
-        this.commentList.add(comment);
+    public void setUser(User user) {
+        this.user = user;
+        user.getPostingList().add(this);
+    }
+
+    public void addComment(Comment comment) {
+        commentList.add(comment);
+        comment.setPosting(this);
     }
 }

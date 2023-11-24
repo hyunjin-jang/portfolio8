@@ -13,13 +13,18 @@ import java.util.List;
 public class PostingController {
     private final PostingService postingService;
 
-    @PostMapping("/posting")
+    @PostMapping("/postings")
     public String writePosting(@RequestBody RequestPostingDto dto) {
         return postingService.createPosting(dto);
     }
 
-    @GetMapping("/posting/{userId}")
-    public int findUserPosting(@PathVariable Long userId) {
+    @GetMapping("/postings/{userId}")
+    public List<String> findUserPosting(@PathVariable Long userId) {
         return postingService.findByUser(userId);
+    }
+
+    @DeleteMapping("/postings/{postingId}")
+    public String deletePosting(@PathVariable Long postingId) {
+        return postingService.deletePosting(postingId);
     }
 }
