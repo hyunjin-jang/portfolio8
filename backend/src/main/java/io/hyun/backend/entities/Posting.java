@@ -1,5 +1,8 @@
 package io.hyun.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.hyun.backend.entities.dto.RequestEditPostingDto;
+import io.hyun.backend.entities.dto.RequestPostingDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,11 +26,28 @@ public class Posting {
     private String postingTitle;
     private String postingContent;
     private LocalDateTime postingDate;
+    private LocalDateTime editPostingDate;
     private String postingFile;
     @ManyToOne(fetch = LAZY)
     private User user;
-    @OneToMany(mappedBy = "posting")
+    @JsonIgnore
+    @OneToMany(mappedBy = "posting", cascade = CascadeType.ALL)
     private List<Comment> commentList = new ArrayList<>();
+
+    public Posting(RequestPostingDto dto) {
+        postingTitle = dto.getPostingTitle();
+        postingContent = dto.getPostingContent();
+        postingFile = dto.getPostingFile();
+    }
+
+    public Posting(RequestEditPostingDto dto) {
+        postingId = dto.getPostingId();
+        postingTitle = dto.getPostingTitle();
+        postingContent = dto.getPostingContent();
+        postingFile = dto.getPostingFile();
+        editPostingDate = dto.getEditPostingDate();
+        user = dto.getUser();
+    }
 
     public void setUser(User user) {
         this.user = user;

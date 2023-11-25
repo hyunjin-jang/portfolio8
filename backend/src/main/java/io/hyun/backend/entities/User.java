@@ -1,5 +1,6 @@
 package io.hyun.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.hyun.backend.entities.references.Address;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,8 +24,10 @@ public class User {
     @Embedded
     private Address userAddress;
     private String userPhoneNumber;
-    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Posting> postingList = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> commentList = new ArrayList<>();
 }

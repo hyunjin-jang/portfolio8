@@ -1,7 +1,7 @@
 package io.hyun.backend.controllers;
 
 import io.hyun.backend.entities.Posting;
-import io.hyun.backend.entities.dto.RequestPostingDto;
+import io.hyun.backend.entities.dto.*;
 import io.hyun.backend.services.PostingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +18,24 @@ public class PostingController {
         return postingService.createPosting(dto);
     }
 
+    @GetMapping("/postings")
+    public List<ResponsePostingDto> findAl() {
+        return postingService.findAll();
+    }
+
     @GetMapping("/postings/{userId}")
-    public List<String> findUserPosting(@PathVariable Long userId) {
+    public List<ResponseUserPostingDto> findUserPosting(@PathVariable Long userId) {
         return postingService.findByUser(userId);
+    }
+
+    @PutMapping("/postings/{postingId}")
+    public ResponseEditPostingDto responseEditPosting(@PathVariable Long postingId) {
+        return postingService.responseEditPosting(postingId);
+    }
+
+    @PutMapping("/postings")
+    public void requestEditPosting(@RequestBody RequestEditPostingDto dto) {
+        postingService.requestEditPosting(dto);
     }
 
     @DeleteMapping("/postings/{postingId}")
