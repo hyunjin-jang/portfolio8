@@ -1,7 +1,7 @@
 package io.hyun.backend.services;
 
 import io.hyun.backend.entities.User;
-import io.hyun.backend.entities.dto.JoinRequestDto;
+import io.hyun.backend.entities.dto.authDto.JoinRequestDto;
 import io.hyun.backend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

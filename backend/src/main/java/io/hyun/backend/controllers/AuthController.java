@@ -1,6 +1,6 @@
 package io.hyun.backend.controllers;
 
-import io.hyun.backend.entities.dto.JoinRequestDto;
+import io.hyun.backend.entities.dto.authDto.JoinRequestDto;
 import io.hyun.backend.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -2,13 +2,12 @@ package io.hyun.backend.services;
 
 import io.hyun.backend.entities.Posting;
 import io.hyun.backend.entities.User;
-import io.hyun.backend.entities.dto.*;
+import io.hyun.backend.entities.dto.postDto.*;
 import io.hyun.backend.repositories.PostingRepository;
 import io.hyun.backend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

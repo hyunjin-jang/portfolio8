@@ -1,4 +1,4 @@
-package io.hyun.backend.entities.dto;
+package io.hyun.backend.entities.dto.postDto;
 
 import io.hyun.backend.entities.User;
 import lombok.AllArgsConstructor;

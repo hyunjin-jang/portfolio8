@@ -1,4 +1,4 @@
-package io.hyun.backend.entities.dto;
+package io.hyun.backend.entities.dto.authDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

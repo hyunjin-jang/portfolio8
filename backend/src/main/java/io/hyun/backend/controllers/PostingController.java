@@ -1,7 +1,6 @@
 package io.hyun.backend.controllers;
 
-import io.hyun.backend.entities.Posting;
-import io.hyun.backend.entities.dto.*;
+import io.hyun.backend.entities.dto.postDto.*;
 import io.hyun.backend.services.PostingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class PostingController {
     }
 
     @GetMapping("/postings")
-    public List<ResponsePostingDto> findAl() {
+    public List<ResponsePostingDto> findAll() {
         return postingService.findAll();
     }
 

@@ -1,8 +1,8 @@
 package io.hyun.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.hyun.backend.entities.dto.RequestEditPostingDto;
-import io.hyun.backend.entities.dto.RequestPostingDto;
+import io.hyun.backend.entities.dto.postDto.RequestEditPostingDto;
+import io.hyun.backend.entities.dto.postDto.RequestPostingDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,10 +52,5 @@ public class Posting {
     public void setUser(User user) {
         this.user = user;
         user.getPostingList().add(this);
-    }
-
-    public void addComment(Comment comment) {
-        commentList.add(comment);
-        comment.setPosting(this);
     }
 }
