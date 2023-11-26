@@ -10,8 +10,6 @@ import io.hyun.backend.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -33,10 +31,10 @@ public class AuthService {
         }
         User foundUser = userRepository.findByUserEmail(dto.getUserEmail());
         if(foundUser.getUserPassword().equals(dto.getUserPassword())) {
-            String token = jwtTokenUtil.create(foundUser.getUserEmail());
             int expireTime = 360000;
-
-            return new ResponseLoginDto(expireTime, token, new SimpleUserDto(foundUser.getUserEmail(), foundUser.getUserNickName()));
+            String token = jwtTokenUtil.jwtCreate(foundUser.getUserEmail());
+            SimpleUserDto user = new SimpleUserDto(foundUser.getUserEmail(), foundUser.getUserNickName());
+            return new ResponseLoginDto(expireTime, token, user);
         }
         return null;
     }

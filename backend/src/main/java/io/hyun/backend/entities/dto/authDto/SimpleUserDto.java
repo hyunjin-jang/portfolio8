@@ -10,5 +10,4 @@ import lombok.NoArgsConstructor;
 public class SimpleUserDto {
     private String userEmail;
     private String userNickName;
-
 }
