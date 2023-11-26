@@ -4,14 +4,19 @@ import io.hyun.backend.entities.User;
 import io.hyun.backend.entities.dto.authDto.RequestLoginDto;
 import io.hyun.backend.entities.dto.authDto.ResponseLoginDto;
 import io.hyun.backend.entities.dto.authDto.JoinRequestDto;
+import io.hyun.backend.entities.dto.authDto.SimpleUserDto;
 import io.hyun.backend.repositories.UserRepository;
+import io.hyun.backend.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
     private final UserRepository userRepository;
+    private final JwtTokenUtil jwtTokenUtil;
 
     public void join(JoinRequestDto dto) {
         User user = User.builder()
@@ -28,8 +33,10 @@ public class AuthService {
         }
         User foundUser = userRepository.findByUserEmail(dto.getUserEmail());
         if(foundUser.getUserPassword().equals(dto.getUserPassword())) {
+            String token = jwtTokenUtil.create(foundUser.getUserEmail());
+            int expireTime = 360000;
 
-            return new ResponseLoginDto();
+            return new ResponseLoginDto(expireTime, token, new SimpleUserDto(foundUser.getUserEmail(), foundUser.getUserNickName()));
         }
         return null;
     }
