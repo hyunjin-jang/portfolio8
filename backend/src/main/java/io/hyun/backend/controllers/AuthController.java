@@ -5,6 +5,7 @@ import io.hyun.backend.entities.dto.authDto.ResponseLoginDto;
 import io.hyun.backend.entities.dto.authDto.JoinRequestDto;
 import io.hyun.backend.services.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

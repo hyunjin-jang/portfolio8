@@ -23,12 +23,12 @@ public class PostingController {
         return postingService.findAll();
     }
 
-    @GetMapping("/postings/{userId}")
+    @GetMapping("/postings/user/{userId}")
     public List<ResponseUserPostingDto> findUserPosting(@PathVariable Long userId) {
         return postingService.findByUser(userId);
     }
 
-    @PutMapping("/postings/{postingId}")
+    @GetMapping("/postings/{postingId}")
     public ResponseEditPostingDto responseEditPosting(@PathVariable Long postingId) {
         return postingService.responseEditPosting(postingId);
     }
