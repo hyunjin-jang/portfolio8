@@ -8,7 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +24,20 @@ import static jakarta.persistence.FetchType.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
 public class Posting {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postingId;
+    @Column(nullable = false, length = 100)
     private String postingTitle;
+    @Lob
     private String postingContent;
-    private LocalDateTime postingDate;
-    private LocalDateTime editPostingDate;
+    @ColumnDefault("0")
+    private int count;
+    @CreationTimestamp
+    private Timestamp postingDate;
+    @CreationTimestamp
+    private Timestamp editPostingDate;
     private String postingFile;
     @ManyToOne(fetch = LAZY)
     private User user;

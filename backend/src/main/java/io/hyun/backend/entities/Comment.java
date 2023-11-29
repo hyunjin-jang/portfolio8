@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.FetchType.*;
@@ -21,8 +22,8 @@ public class Comment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
     private String commentContent;
-    private LocalDateTime commentDate;
-    private LocalDateTime commentEditDate;
+    private Timestamp commentDate;
+    private Timestamp commentEditDate;
     @ManyToOne(fetch = LAZY)
     private User user;
     @ManyToOne(fetch = LAZY)

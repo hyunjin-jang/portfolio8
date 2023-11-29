@@ -53,6 +53,7 @@ public class PostingService {
 
     public void requestEditPosting(RequestEditPostingDto dto) {
         Posting result = new Posting(dto);
+        System.out.println(dto.getEditPostingDate());
         postingRepository.save(result);
     }
 

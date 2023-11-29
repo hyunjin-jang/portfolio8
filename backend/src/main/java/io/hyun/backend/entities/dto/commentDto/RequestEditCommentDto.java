@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Data
@@ -14,8 +15,8 @@ import java.time.LocalDateTime;
 public class RequestEditCommentDto {
     private Long commentId;
     private String commentContent;
-    private LocalDateTime commentDate;
-    private LocalDateTime commentEditDate;
+    private Timestamp commentDate;
+    private Timestamp commentEditDate;
     private Posting posting;
     private User user;
 }
